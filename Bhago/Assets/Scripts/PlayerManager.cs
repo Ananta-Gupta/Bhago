@@ -33,12 +33,23 @@ public class PlayerManager : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x > minPos)
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+
+            if (touchPos.x < 0 && transform.position.x > minPos)
+                targetPos = new Vector2(transform.position.x - xincrement, -2);
+            else if (touchPos.x > 0 && transform.position.x < maxPos)
+                targetPos = new Vector2(transform.position.x + xincrement, -2);
+        }
+
+        /*if (Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x > minPos)
         {
             targetPos = new Vector2(transform.position.x - xincrement, -2);
         }else if (Input.GetKeyDown(KeyCode.RightArrow) && transform.position.x < maxPos)
         {
             targetPos = new Vector2(transform.position.x + xincrement, -2);
-        }
+        }*/
     }
 }
