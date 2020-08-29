@@ -1,11 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Obstacles : MonoBehaviour
 {
     public int damage = 1;
     public float speed;
+
+    public Animator animator;
+
+    private void Start()
+    {
+        animator = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -16,8 +21,8 @@ public class Obstacles : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
+            animator.SetTrigger("Shake");
             collision.GetComponent<PlayerManager>().health -= damage;
-            Debug.Log(collision.GetComponent<PlayerManager>().health);
             Destroy(gameObject);
         }
     }

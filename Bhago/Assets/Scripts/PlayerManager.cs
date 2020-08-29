@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class PlayerManager : MonoBehaviour
 
     public int health = 3;
 
+    public Text healthText;
+    public GameObject gameOver;
+
     private void Start()
     {
         targetPos = new Vector2(0, -2);
@@ -19,9 +23,12 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
+        healthText.text = health.ToString();
+
         if (health <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            gameOver.SetActive(true);
+            Destroy(gameObject);
         }
 
         transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
