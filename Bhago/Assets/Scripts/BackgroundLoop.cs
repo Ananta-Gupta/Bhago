@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BackgroundLoop : MonoBehaviour
 {
@@ -9,7 +7,7 @@ public class BackgroundLoop : MonoBehaviour
     public float endY;
     public float startY;
 
-    private void Update()
+    private void FixedUpdate()
     {
         transform.Translate(Vector2.down * speed * Time.deltaTime);
 
