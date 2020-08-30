@@ -9,9 +9,9 @@ public class BackgroundLoop : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Translate(Vector2.down * speed * Time.deltaTime);
+        transform.Translate(Vector3.down * speed * Time.deltaTime);
 
-        if (transform.position.y <= endY)
+        if (transform.position.y < endY)
         {
             Vector2 pos = new Vector2(transform.position.x, startY);
             transform.position = pos;
