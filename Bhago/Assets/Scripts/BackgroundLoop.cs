@@ -7,7 +7,7 @@ public class BackgroundLoop : MonoBehaviour
     public float endY;
     public float startY;
 
-    private void FixedUpdate()
+    private void Update()
     {
         transform.Translate(Vector3.down * speed * Time.deltaTime);
 

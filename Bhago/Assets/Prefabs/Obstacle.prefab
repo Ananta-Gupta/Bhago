@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  speed: 7
+  speed: 6
   animator: {fileID: 0}
 --- !u!114 &-5353506653113947874
 MonoBehaviour:
